@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing ...</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; font-family: monospace; }
+        canvas { display: block; }
+
+        #anchor {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            z-index: 999;
+            transition: color 0.1s ease;
+            letter-spacing: 1px;
+            animation: shutter 5s infinite;
+            white-space: nowrap;
+            /* The "Purge" - tightly cropped black background */
+            background: #000;
+            padding: 4px 8px;
+        }
+
+        @keyframes shutter {
+            0%, 10%, 12%, 14%, 40%, 42%, 80%, 100% { opacity: 1; }
+            11%, 13%, 41%, 81% { opacity: 0.2; }
+        }
+
+        #anchor:hover {
+            color: #00ffff;
+            opacity: 1 !important;
+            animation: none;
+        }
+    </style>
+</head>
+<body>
+
+<a href="htmldawg.html" id="anchor">PLACEHOLDER ...</a>
+<canvas id="c"></canvas>
+
+<script>
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+
+    const xfText = "Xenofeminism is a project of rationalist repurposing. It is an affirmation of the alien. Our world is in vertigo. We are all alienated—but have we ever been otherwise? It is through, and not despite, our alienated condition that we can free ourselves from the muck of immediacy. Freedom is not a given—and it is certainly not given by anything 'natural'. The construction of freedom involves not less but more alienation; alienation is the labour of freedom's construction. Nothing should be accepted as fixed, immutable, or given. If nature is unjust, change nature! Xenofeminism is gender-abolitionist. Gender abolitionism is not code for the eradication of what are currently considered 'gendered' traits. It is the ambition to construct a society where traits currently assembled under the rubric of gender, no longer furnish a grid for the asymmetric operation of power. Reason is not 'masculine'. Universalism is not 'oppressive'. XF is a technology of the manifold. Let a hundred sexes bloom!";
+
+    const words = xfText.toUpperCase().split(" ");
+    const glitchChars = "@#$%&*+=-:.";
+    const vChars = "01";
+
+    const charW = 10, charH = 12;
+    let frame = 0, wordIndex = 0, activeWords = [];
+    let shutterTimer = 0, blackoutTimer = 0;
+
+    function draw() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const cols = Math.floor(canvas.width / charW);
+        const rows = Math.floor(canvas.height / charH);
+
+        const midX = Math.floor(cols / 2);
+        const midY = Math.floor(rows / 2);
+        const deadZone = {
+            xStart: midX - 12,
+            xEnd: midX + 12,
+            yStart: midY - 3,
+            yEnd: midY + 3
+        };
+
+        const hue = (frame * 0.5) % 360;
+
+        if (shutterTimer <= 0 && blackoutTimer <= 0 && Math.random() > 0.96) {
+            shutterTimer = Math.floor(Math.random() * 30) + 5;
+        }
+        if (blackoutTimer <= 0 && Math.random() > 0.985) {
+            blackoutTimer = Math.floor(Math.random() * 40) + 10;
+        }
+
+        const isShutter = shutterTimer > 0;
+        const isBlackout = blackoutTimer > 0;
+
+        ctx.fillStyle = isBlackout ? "#000" : `hsl(${hue}, 90%, 5%)`;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.font = `bold 13px monospace`;
+
+        if (frame % 8 === 0) {
+            const burstLength = Math.floor(Math.random() * 5) + 1;
+            let burstString = "";
+            for(let i = 0; i < burstLength; i++) {
+                burstString += words[(wordIndex + i) % words.length] + " ";
+            }
+
+            let spawnX = Math.floor(Math.random() * (cols - 35));
+            let spawnY = Math.floor(Math.random() * rows);
+
+            const overlapsX = (spawnX + burstString.length > deadZone.xStart && spawnX < deadZone.xEnd);
+            const overlapsY = (spawnY > deadZone.yStart && spawnY < deadZone.yEnd);
+
+            if (!(overlapsX && overlapsY)) {
+                activeWords.push({
+                    text: burstString.trim(),
+                    x: spawnX,
+                    y: spawnY,
+                    life: 60
+                });
+                wordIndex = (wordIndex + burstLength) % words.length;
+            }
+        }
+        activeWords = activeWords.filter(w => w.life > 0);
+
+        const rowOffsets = new Array(rows).fill(0);
+        let whiteSlice = null;
+
+        if (!isBlackout && !isShutter) {
+            if (Math.random() > 0.75) {
+                const yS = Math.floor(Math.random() * rows), yH = Math.floor(Math.random() * 6) + 1;
+                const shift = (Math.random() - 0.5) * 80;
+                for(let i = 0; i < yH; i++) { if (yS + i < rows) rowOffsets[yS + i] = shift; }
+            }
+            if (Math.random() > 0.93) {
+                whiteSlice = { y: Math.floor(Math.random() * rows), h: Math.floor(Math.random() * 2) + 1 };
+            }
+        }
+
+        if (whiteSlice && !isBlackout) {
+            ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+            ctx.fillRect(0, whiteSlice.y * charH - 8, canvas.width, whiteSlice.h * charH);
+        }
+
+        for (let y = 0; y < rows; y++) {
+            const currentXOffset = rowOffsets[y];
+            const inWhite = whiteSlice && y >= whiteSlice.y && y < whiteSlice.y + whiteSlice.h;
+
+            for (let x = 0; x < cols; x++) {
+                let nx = x * 0.05, ny = y * 0.05, nt = frame * 0.02;
+                let noise = (Math.sin(nx + nt) + Math.sin(ny + nt * 0.8) + Math.sin((nx + ny) * 0.5 + nt * 1.2)) / 3;
+
+                let wordChar = null;
+                for (let w of activeWords) {
+                    if (y === w.y && x >= w.x && x < w.x + w.text.length) wordChar = w.text[x - w.x];
+                }
+
+                const drawX = (x * charW) + currentXOffset;
+                const drawY = y * charH;
+
+                if (wordChar) {
+                    ctx.fillStyle = (inWhite && !isBlackout) ? "#000" : "#fff";
+                    ctx.fillText(wordChar, drawX, drawY);
+                } else if (!isBlackout) {
+                    if (!isShutter && noise > 0.08) {
+                        ctx.fillStyle = inWhite ? "#000" : `hsl(${Math.random() * 360}, 100%, 70%)`;
+                        ctx.fillText(glitchChars[Math.floor(Math.random() * glitchChars.length)], drawX, drawY);
+                    } else {
+                        ctx.fillStyle = inWhite ? "rgba(0,0,0,0.3)" : `hsl(${hue}, 100%, 20%)`;
+                        ctx.fillText(vChars[Math.floor(Math.random() * vChars.length)], drawX, drawY);
+                    }
+                }
+            }
+        }
+
+        if (shutterTimer > 0) shutterTimer--;
+        if (blackoutTimer > 0) blackoutTimer--;
+        activeWords.forEach(w => w.life--);
+        frame++;
+        requestAnimationFrame(draw);
+    }
+    draw();
+</script>
+</body>
+</html>
