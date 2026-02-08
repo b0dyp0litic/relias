@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>XF Entry Sequence</title>
+    <title> ................................................................................................. </title>
     <style>
         body { margin: 0; overflow: hidden; background: #000; font-family: monospace; }
         canvas { display: none; } /* Hidden until click */
 
-        /* Entry Screen */
         #gate {
             position: absolute;
             top: 50%;
@@ -21,7 +20,6 @@
             animation: shutter 5s infinite;
         }
 
-        /* The Anchor (hidden until gate is clicked) */
         #anchor {
             display: none;
             position: absolute;
@@ -82,11 +80,11 @@
     // --- Entry Logic ---
     gate.addEventListener('click', () => {
         isRunning = true;
-        gate.style.display = 'none';    // Remove gate
-        canvas.style.display = 'block'; // Show canvas
-        anchor.style.display = 'block'; // Show placeholder
-        audio.play();                   // Start MP3
-        draw();                         // Start Loop
+        gate.style.display = 'none';
+        canvas.style.display = 'block';
+        anchor.style.display = 'block';
+        audio.play();
+        draw();
     });
 
     function draw() {
