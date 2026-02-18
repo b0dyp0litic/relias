@@ -2,58 +2,82 @@
 <html lang="en">
 
   <head>
-
     <title> MEDPL 15000 - Spring 2026 - R. Elias</title>
 
     <style>
       body {
-        background-color: #548F3A;
+        /* 1. BACKGROUND IMAGE SETTINGS */
+        background-image: url('wash.png'); /* Replace with your filename */
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: 100% auto;
+        background-color: #548F3A; /* Green background color */
+
+        /* 2. THE TOP MARGIN "SLIDER" */
+        padding-top: 150px; /* Adjust this to move the text up or down */
+
         color: #320233;
-        margin: 3%;
-       }
+        margin: 0; /* Set to 0 so the image touches the very top/sides */
+        font-family: sans-serif;
+      }
+
+      /* Wrapper to keep your text from touching the edges since body margin is 0 */
+      .page-content {
+        padding: 0 3%;
+      }
+
       a {
         color: #021B33;
         text-decoration: underline;
         margin-bottom: 10px;
-       }
+      }
+
       a:hover {
         color: #1953AB;
-       }
+      }
+
       .project-list {
         margin-left: 20px;
         display: flex;
         flex-direction: column;
-       }
+      }
+
       .footer-link {
         margin-left: 0;
         margin-top: 40px;
-       }
-      h1,h2,h3 { margin-left: 0; }
+        display: inline-block; /* Allows margin-top to work correctly */
+      }
+
+      h1, h2, h3 { margin-left: 0; margin-top: 0; }
       p { margin-left: 0px; margin-top: 0; margin-bottom: 0; }
     </style>
-
   </head>
-
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <body>
 
-    <h1> MEDPL 15000 - Spring 2026 </h1>
-    <h2> R. Elias - Class Projects </h2>
-    <br>
-    <h3><span style="color: #000000;">==================================</span></h3>
-    <br>
-    <br>
-    <h3> Table of Contents: </h3>
-    <br>
-    <div class = "project-list">
-    <a href = "htmldawg.html"> HTMLDAWG Tutorials </a>
-    <a href = "assign1photo1.html"> Photo Editing Assignment 1 - First Photo </a>
-    <a href = "assign1photo2.html"> Photo Editing Assignment 1 - Second Photo </a>
-    <a href = "sontag.html"> Susan Sontag - In Plato's Cave - Reading Response </a>
+    <div class="page-content">
+      <h1> MEDPL 15000 - Spring 2026 </h1>
+      <h2> R. Elias - Class Projects </h2>
+
+      <br>
+      <h3><span style="color: #000000;">==================================</span></h3>
+      <br>
+
+      <h3> Table of Contents: </h3>
+      <div class="project-list">
+        <a href="htmldawg.html"> HTMLDAWG Tutorials </a>
+        <a href="assign1photo1.html"> Photo Editing Assignment 1 - First Photo </a>
+        <a href="assign1photo2.html"> Photo Editing Assignment 1 - Second Photo </a>
+        <a href="sontag.html"> Susan Sontag - In Plato's Cave - Reading Response </a>
+        <a href="assign2photo1.html"> Photo Editing Assignment 2 - First Photo </a>
+        <a href="assign2photo2.html"> Photo Editing Assignment 2 - Second Photo </a>
+        <a href="assign2photo3.html"> Photo Editing Assignment 2 - Third Photo </a>
+        <a href="malik.html"> Nesrine Malik - With AI slop distorting our reality, the world is sleepwalking into disaster - Reading Response </a>
+      </div>
+
+      <br><br><br>
+      <a href="index.html" class="footer-link"> Return to Statement Page </a>
     </div>
-    <br><br><br>
-    <a href = "index.html" class = "footer-link"> Return to Statement Page </a>
-    <br>
 
   </body>
+</html>
