@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title> assignment 6 : image 1</title>
+    <title> assignment 5 : image 2</title>
     <style>
         body {
           margin: 0;
@@ -11,22 +11,27 @@
           flex-direction: column;
           background-color: #194D8C;
           overflow: hidden;
-         }
+        }
 
         .image-area {
           flex: 1;
           display: flex;
-          justify-content: center;
-          align-items: center;
+          justify-content: center; /* Centers horizontally */
+          align-items: center;     /* Centers vertically */
           overflow: hidden;
-         }
+        }
+
+        .image-area a {
+          display: block;          /* Changed from flex to block */
+          height: 100%;            /* Ensure link fills height */
+        }
 
         .image-area img {
-          max-width: 100%;
-          max-height: 100%;
-          object-fit: contain;
           display: block;
-         }
+          height: 100%;            /* Forces height to fit container */
+          width: auto;             /* Allows width to scale proportionally */
+          object-fit: contain;     /* Keeps image aspect ratio */
+        }
 
         .analysis-block {
           width: 100vw;
@@ -43,31 +48,24 @@
           max-width: 1000px;
           line-height: 1.6;
           font-family: sans-serif;
-         }
+        }
 
-        a {
-          display: flex;
-          height: 100%;
-          width: 100%;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-         }
+        /* Removed global 'a' styles that were overriding the image container */
     </style>
 </head>
 
 <body>
 
     <div class="image-area">
-        <a href="assign6image2.html">
-            <img src="eye-blink.gif" alt=" ">
+        <a href="contents.html">
+            <img src="apron.png" alt=" ">
         </a>
     </div>
 
     <div class="analysis-block">
         <p>
           Coming Soon ...<br>
-          <a href = "assign6image2.html">Continued ...</a>
+          <a href="contents.html">Continued ...</a>
         </p>
     </div>
 
