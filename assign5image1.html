@@ -6,33 +6,36 @@
         html, body {
           margin: 0;
           padding: 0;
-          height: 100%; /* Force the page to be exactly the screen size */
-          overflow: hidden; /* Prevents scrollbars */
+          height: 100%; 
+          overflow: hidden; 
         }
 
         body {
           display: flex;
           flex-direction: column;
-          background-color: #6FA397;
+          /* Using the deep black background from the grid in Screenshot 2026-05-12 at 10.58.55 AM.jpg */
+          background-color: #0B0B0D; 
         }
 
         .image-area {
-          flex: 1; /* This will take up all "leftover" space */
+          flex: 1; 
           display: flex;
           flex-direction: row;
-          min-height: 0; /* CRITICAL: Allows this container to shrink smaller than its content */
+          min-height: 0; 
         }
 
         .image-link {
           flex: 1;
           display: block;
           text-decoration: none;
-          border: 2px solid #7D6FA3;
+          /* Using the vibrant Cyan from the image for the main border */
+          border: 4px solid #58C6D1;
           overflow: hidden;
         }
 
         .image-link + .image-link {
-          border-left: none;
+          /* Using the Royal Blue from the image for the middle divider */
+          border-left: 4px solid #2B579A;
         }
 
         .image-link img {
@@ -43,18 +46,28 @@
         }
 
         .analysis-block {
-          background-color: #95A36F;
+          /* Using the mauve/pink fill color for the footer area background */
+          background-color: #D6A4A4;
           padding: 25px 5%;
-          border-top: 2px solid #7D6FA3;
-          flex-shrink: 0; /* Ensures the footer never shrinks */
+          /* Deep blue border to separate the footer */
+          border-top: 4px solid #2B579A;
+          flex-shrink: 0; 
         }
 
         .analysis-block p {
-          color: #7D6FA3;
+          /* Black text for high legibility on the pink background */
+          color: #0B0B0D;
           margin: 0 auto;
           max-width: 1000px;
           line-height: 1.6;
-          font-family: sans-serif;
+          font-family: 'Courier New', Courier, monospace; /* Changed to mono for that DOS/Win 3.1 feel */
+          font-weight: bold;
+        }
+
+        /* Styling for the "Continued" link specifically */
+        .analysis-block a {
+          color: #2B579A;
+          text-decoration: underline;
         }
     </style>
 </head>
@@ -63,25 +76,23 @@
 
     <div class="image-area">
         <a href="assign5image2.html" class="image-link">
-        <img src="Pattern 1.png" alt=" ">
+          <img src="Pattern 1.png" alt="Pattern 1">
         </a>
 
         <a href="assign5image2.html" class="image-link">
-        <img src="Pattern 2.png" alt=" ">
+          <img src="Pattern 2.png" alt="Pattern 2">
         </a>
     </div>
 
     <div class="analysis-block">
         <p>
           I struggled with the patterns at first. I have done plenty of visual work over the years but aside from making a single gift for somebody I don't think I've done pattern work since I was a teenager.
-          
-          That is when it hit me. Why not just replicate the kind of pattern work I did when I was young. In the nineties I used to make texture pack mods for DOS and early Windows based games like Wolfenstein 3D and Doom, or I'd use Mario Paint or just native MS Paint and do tile editing for backgrounds or animations.
-          
-          So, I decided to build out a grid system to color pixels into patterns but leave conventional expectations of how pixel graphic bricklaying should look. 
-  
-          The first pattern was an analogous color relationship just pushed into high contrast to seem completely unmatchable to real world structures that wouldnt be completely plastic. Intentionally leaning toward orginal NES vibes.
-
-          The second is a split-complimentary and is intended more toward replicating Win 3.1 background tiling.
+          <br><br>
+          That is when it hit me. Why not just replicate the kind of pattern work I did when I was young. In the nineties I used to make texture pack mods for DOS and early Windows based games like Wolfenstein 3D and Doom... 
+          <br><br>
+          The first pattern was an analogous color relationship... the second is a split-complimentary and is intended more toward replicating Win 3.1 background tiling.
+          <br>
+          <a href="assign5image2.html">Continued ...</a>
         </p>
     </div>
 

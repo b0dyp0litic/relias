@@ -9,7 +9,8 @@
           height: 100vh;
           display: flex;
           flex-direction: column;
-          background-color: #194D8C;
+          /* Dark tech-black from the frames in Screenshot 2026-05-12 at 11.02.54 AM.jpg */
+          background-color: #0D0D0D; 
           overflow: hidden;
         }
 
@@ -19,33 +20,47 @@
           justify-content: center;
           align-items: center;
           overflow: hidden;
+          /* Muted iridescent silver/grey from the background of the image */
+          background-color: #C2C1C7;
         }
 
         .image-area img {
           width: 100%;
           height: 100%;
-          object-fit: cover; /* Changed from contain to cover */
+          object-fit: cover; 
           display: block;
         }
 
         .analysis-block {
           width: 100vw;
-          background-color: #333333;
+          /* Deep purple-black for a high-end tech feel */
+          background-color: #1A0B21;
           padding: 25px 5%;
           box-sizing: border-box;
           flex-shrink: 0;
-          border-top: 1px solid #9E005D;
+          /* Vibrant violet/pink pulled from the hair/skin highlights */
+          border-top: 3px solid #D18EC2;
         }
 
         .analysis-block p {
-          color: #9E005D;
+          /* Soft iridescent white for readability */
+          color: #F2F2F2;
           margin: 0 auto;
           max-width: 1000px;
           line-height: 1.6;
-          font-family: sans-serif;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        a {
+        /* Target the link inside the p tag specifically */
+        .analysis-block p a {
+          display: inline;
+          color: #D18EC2;
+          font-weight: bold;
+          text-decoration: underline;
+        }
+
+        /* Main image link wrapper */
+        .image-link-container {
           display: flex;
           height: 100%;
           width: 100%;
@@ -59,15 +74,15 @@
 <body>
 
     <div class="image-area">
-        <a href="contents.html">
-            <img src="zuckglasses-animation.gif" alt=" ">
+        <a href="contents.html" class="image-link-container">
+            <img src="zuckglasses-animation.gif" alt="Mark wearing glasses animation">
         </a>
     </div>
 
     <div class="analysis-block">
         <p>
           Mark's first spin on the Meta Ray-Bans. <br>
-          <a href = "contents.html">Continued ...</a>
+          <a href="contents.html">Continued ...</a>
         </p>
     </div>
 
