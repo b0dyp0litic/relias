@@ -9,8 +9,8 @@
           height: 100vh;
           display: flex;
           flex-direction: column;
-          /* Dark Blue from the outer edges of Screenshot 2026-05-12 at 11.01.03 AM.png */
-          background-color: #194D8C; 
+          /* Dark Blue from the screenshot side panels */
+          background-color: #CCCCCC;
           overflow: hidden;
          }
 
@@ -20,8 +20,6 @@
           justify-content: center;
           align-items: center;
           overflow: hidden;
-          /* Light Grey from the inner background of the eye image */
-          background-color: #CCCCCC; 
          }
 
         .image-area img {
@@ -33,34 +31,25 @@
 
         .analysis-block {
           width: 100vw;
-          /* Dark Blue to match the body, creating a seamless look */
+          /* Grey from the screenshot background */
           background-color: #194D8C;
           padding: 25px 5%;
           box-sizing: border-box;
           flex-shrink: 0;
-          /* Vibrant Magenta/Purple from the eye's lids for the border */
-          border-top: 4px solid #9E2A8E;
+          /* Magenta-purple from the eye lids */
+          border-top: 1px solid #9E2A8E;
         }
 
         .analysis-block p {
-          /* White text for high contrast on the dark blue background */
-          color: #FFFFFF;
+          /* Dark Blue for readability on the grey background */
+          color: #9E2A8E;
           margin: 0 auto;
           max-width: 1000px;
           line-height: 1.6;
           font-family: sans-serif;
          }
 
-        /* Specific link styling within the text block */
-        .analysis-block a {
-          display: inline; /* Overriding your global 'a' flex setting for the text link */
-          color: #9E2A8E; /* Magenta/Purple to match the eye accents */
-          font-weight: bold;
-          text-decoration: underline;
-        }
-
-        /* The main image link container */
-        .image-link {
+        a {
           display: flex;
           height: 100%;
           width: 100%;
@@ -74,15 +63,15 @@
 <body>
 
     <div class="image-area">
-        <a href="assign6image2.html" class="image-link">
-            <img src="eye-blink.gif" alt="Blinking Eye">
+        <a href="assign6image2.html">
+            <img src="eye-blink.gif" alt=" ">
         </a>
     </div>
 
     <div class="analysis-block">
         <p>
           Blink to double check reality ... <br>
-          <a href="assign6image2.html">Continued ...</a>
+          <a href = "assign6image2.html">Continued ...</a>
         </p>
     </div>
 

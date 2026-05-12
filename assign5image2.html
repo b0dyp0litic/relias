@@ -6,70 +6,56 @@
         html, body {
           margin: 0;
           padding: 0;
-          height: 100%; 
-          overflow: hidden; 
+          height: 100%; /* Force the page to be exactly the screen size */
+          overflow: hidden; /* Prevents scrollbars */
         }
 
         body {
           display: flex;
           flex-direction: column;
-          /* Using the darkest purple/black grid lines from Screenshot 2026-05-12 at 11.00.21 AM.png */
-          background-color: #0F0526; 
+          /* Dark charcoal from the glasses frames */
+          background-color: #0D0D0D;
         }
 
         .image-area {
-          flex: 1; 
+          flex: 1; /* This will take up all "leftover" space */
           display: flex;
           flex-direction: row;
-          min-height: 0; 
+          min-height: 0; /* CRITICAL: Allows this container to shrink smaller than its content */
+          justify-content: center;
         }
 
         .image-link {
           flex: 1;
-          display: block;
+          display: flex;
+          justify-content: center;
           text-decoration: none;
-          /* Using the bright Electric Blue from the image for the main border */
-          border: 4px solid #0055FF;
+          /* Removed the border from here */
           overflow: hidden;
         }
 
-        .image-link + .image-link {
-          /* Using the Magenta/Purple from the image for the middle divider */
-          border-left: 4px solid #D900FF;
-        }
-
         .image-link img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          height: 100%; /* Stretches the image top to bottom */
+          width: auto;   /* Maintains aspect ratio */
           display: block;
         }
 
         .analysis-block {
-          /* Using the mid-tone Lavender/Purple from the background grid of the image */
-          background-color: #6A4CFF;
+          /* Deep purple-black from the shadows */
+          background-color: #1A0B21;
           padding: 25px 5%;
-          /* Vibrant Magenta top border for separation */
-          border-top: 4px solid #D900FF;
-          flex-shrink: 0; 
+          /* This is the only line remaining: between the image and text */
+          border-top: 2px solid #D18EC2;
+          flex-shrink: 0; /* Ensures the footer never shrinks */
         }
 
         .analysis-block p {
-          /* Pure White text for maximum pop against the purple background */
-          color: #FFFFFF;
+          /* Violet highlight for the text */
+          color: #D18EC2;
           margin: 0 auto;
           max-width: 1000px;
           line-height: 1.6;
-          font-family: 'Courier New', Courier, monospace;
-          font-weight: bold;
-          /* Subtle text shadow to give it that retro-CRT glow */
-          text-shadow: 2px 2px #0F0526;
-        }
-
-        /* Styling for the "Continued" link specifically */
-        .analysis-block a {
-          color: #00FFCC; /* Using a neon teal for links to stand out from the purple */
-          text-decoration: underline;
+          font-family: sans-serif;
         }
     </style>
 </head>
@@ -77,24 +63,14 @@
 <body>
 
     <div class="image-area">
-        <a href="assign5image2.html" class="image-link">
-          <img src="Pattern 1.png" alt="Pattern 1">
-        </a>
-
-        <a href="assign5image2.html" class="image-link">
-          <img src="Pattern 2.png" alt="Pattern 2">
+        <a href="contents.html" class="image-link">
+        <img src="Apron.png" alt=" ">
         </a>
     </div>
 
     <div class="analysis-block">
         <p>
-          I struggled with the patterns at first. I have done plenty of visual work over the years but aside from making a single gift for somebody I don't think I've done pattern work since I was a teenager.
-          <br><br>
-          That is when it hit me. Why not just replicate the kind of pattern work I did when I was young. In the nineties I used to make texture pack mods for DOS and early Windows based games like Wolfenstein 3D and Doom... 
-          <br><br>
-          The first pattern was an analogous color relationship just pushed into high contrast to seem completely unmatchable to real world structures that wouldnt be completely plastic. Intentionally leaning toward orginal NES vibes.
-          <br>
-          <a href="assign5image2.html">Continued ...</a>
+        First pattern on an apron worn by a strange AI man.
         </p>
     </div>
 
